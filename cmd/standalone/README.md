@@ -1,20 +1,15 @@
 # Claude Code Insight - Standalone 版本
 
-这是一个一体化版本，将前端静态资源嵌入到 Go 二进制文件中，只需一个可执行文件即可运行完整服务。
+这是一个一体化版本，前端静态资源已经包含在仓库中，并嵌入到 Go 二进制文件中，只需一个可执行文件即可运行完整服务。
 
 ## 特性
 
 - **零依赖部署**：前端资源已嵌入二进制文件
-- **自动构建前端**：首次运行时自动检测并构建前端
 - **单文件部署**：编译后只需一个可执行文件
 
 ## 编译
 
-### 标准版本
-
 ```bash
-# 从 backend-go 目录编译
-cd backend-go
 make build-standalone
 ```
 
@@ -23,7 +18,6 @@ make build-standalone
 使用 UPX 压缩生成更小的二进制文件：
 
 ```bash
-cd backend-go
 make build-minimal
 ```
 
@@ -36,13 +30,6 @@ make build-minimal
 > sudo apt-get install upx
 > ```
 
-### 使用项目根目录的构建脚本
-
-```bash
-# 一键构建（最小化版本）
-./build.sh
-```
-
 ## 运行
 
 ```bash
@@ -52,16 +39,6 @@ make build-minimal
 # 指定端口
 ./bin/claude-insight -p 8080
 ```
-
-## 首次运行
-
-首次运行时，如果检测到前端未构建，程序会自动：
-
-1. 安装前端依赖（`npm install`）
-2. 构建前端（`npm run build`）
-3. 复制构建产物到 `dist/` 目录
-
-这个过程可能需要几分钟，请耐心等待。
 
 ## 访问
 
@@ -73,29 +50,14 @@ make build-minimal
 
 ## 配置
 
-程序会读取 `~/.claude-code-insight/config.json` 配置文件，确保配置中的 `claudeCodePath` 指向正确的 Claude Code 数据目录。
+程序会读取 Claude Code 相关环境变量或默认路径，确保 Claude Code 数据目录可访问。
 
 ## 故障排除
-
-### 前端构建失败
-
-如果自动构建失败，请手动执行：
-
-```bash
-cd ../frontend
-npm install
-npm run build
-cd ../backend-go
-```
 
 ### 端口被占用
 
 使用 `-p` 参数指定其他端口：
 
 ```bash
-./bin/standalone -p 3001
+./bin/claude-insight -p 3001
 ```
-
-### 找不到前端目录
-
-程序会在当前目录的上级目录查找 `frontend/` 目录。如果路径不同，请修改 `buildFrontend()` 函数中的路径配置。
