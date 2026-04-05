@@ -1,0 +1,1 @@
+const o={debug:(...r)=>{},info:(...r)=>{console.info("[Info]",...r)},warn:(...r)=>{console.warn("[Warn]",...r)},error:(...r)=>{console.error("[Error]",...r)}};function t(r){const e=new Date(r);return isNaN(e.getTime())?"":e.toLocaleString("zh-CN")}function n(r){return r>=1e6?`${(r/1e6).toFixed(2)}M`:r>=1e3?`${(r/1e3).toFixed(1)}K`:r.toLocaleString()}export{n as a,t as f,o as l};

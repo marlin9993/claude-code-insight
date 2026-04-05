@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+
+# Build output
+bin/
+cmd/standalone/dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local tool state
+.claude/
+
+# Environment
+.env
+.env.local
+.env.*
