@@ -13,6 +13,19 @@
 make build-standalone
 ```
 
+## 使用 go install 安装
+
+```bash
+go install github.com/marlin9993/claude-code-insight/cmd/standalone@latest
+```
+
+安装后的命令名为 `standalone`：
+
+```bash
+standalone
+standalone -p 3001
+```
+
 ### 最小化版本（推荐）
 
 使用 UPX 压缩生成更小的二进制文件：

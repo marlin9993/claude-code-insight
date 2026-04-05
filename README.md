@@ -53,6 +53,18 @@
 - Go 1.23+
 - Claude Code 历史记录目录
 
+### 使用 go install 安装
+```bash
+go install github.com/marlin9993/claude-code-insight/cmd/standalone@latest
+```
+
+安装后可直接运行：
+
+```bash
+standalone
+standalone -p 3001
+```
+
 ### 安装依赖
 ```bash
 go mod download
