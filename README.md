@@ -85,6 +85,32 @@ make build
 make test
 ```
 
+## 发布
+
+### 使用 gh 手动创建 release
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+gh release create v0.1.0 --verify-tag --generate-notes
+```
+
+### 使用 GitHub Actions 自动编译并发布
+- 仓库已包含 CI 工作流：push 和 pull request 时自动执行 `go test ./...`
+- 仓库已包含 release 工作流：推送 `v*` 标签时自动编译多平台二进制并上传到 GitHub Release
+
+触发方式：
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+自动发布的二进制目标平台：
+- linux amd64
+- darwin amd64
+- darwin arm64
+- windows amd64
+
 ## 项目结构
 
 ```
